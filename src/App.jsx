@@ -1,14 +1,18 @@
 import './App.css'
 import Header from './components/Header'
-import Main from './components/Main'
 import Category from './components/Category'
 import Sort from './components/Sort'
 import PizzaList from './components/PizzaList'
+import pizzas from './pizzas.json'
 
 const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
 
 
+
 export default function App() {
+
+
+
   return (
     <>
       <div className=' bg-yellow-400 p-10'>
@@ -18,18 +22,14 @@ export default function App() {
             <Category categoryList={categories} />
             <Sort />
           </div>
-          <div className='grid grid-cols-4 gap-5 mt-10'>
-            <PizzaList />
-            <PizzaList />
-            <PizzaList />
-            <PizzaList />
-            <PizzaList />
-            <PizzaList />
-            <PizzaList />
-            <PizzaList />
-            <PizzaList />
+          <div className='grid grid-cols-4 gap-4 mt-10 justify-items-center'>
+            {
+              pizzas.map((pizza) => (
+                <PizzaList key={pizza.id} {...pizza} />
+              ))
+            }
+
           </div>
-          <Main />
         </div>
 
       </div>
