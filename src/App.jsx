@@ -3,8 +3,8 @@ import Header from './components/Header'
 import Category from './components/Category'
 import Sort from './components/Sort'
 import PizzaList from './components/PizzaList'
-import pizzas from './pizzas.json'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
 
@@ -13,9 +13,14 @@ const categories = ['Все', 'Мясные', 'Вегетарианская', '�
 export default function App() {
 
   const [activeCategory, setActiveCategory] = useState(0)
+  const [data, setData] = useState([])
 
   useEffect(() => {
-    console.log('Ты нажал на какую то категорию')
+    axios.get('https://c12550f372786959.mokky.dev/items')
+      .then(res => {
+        setData(res.data)
+      })
+
   }, [activeCategory])
 
   return (
@@ -29,7 +34,7 @@ export default function App() {
           </div>
           <div className='grid grid-cols-4 gap-4 mt-10 justify-items-center'>
             {
-              pizzas.map((pizza) => (
+              data.map((pizza) => (
                 <PizzaList key={pizza.id} {...pizza} />
               ))
             }
