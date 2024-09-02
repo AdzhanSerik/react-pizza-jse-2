@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react'
-export default function Category({ categoryList }) {
+export default function Category({ categoryList, activeCategory, setActiveCategory }) {
 
-    const [activeCategory, setActiveCategory] = useState(0)
 
     return (
         <ul className="flex items-center gap-6">
