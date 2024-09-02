@@ -16,7 +16,7 @@ export default function App() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    axios.get('https://c12550f372786959.mokky.dev/items')
+    axios.get(`https://c12550f372786959.mokky.dev/items?category=${activeCategory === 0 ? '*' : activeCategory}`)
       .then(res => {
         setData(res.data)
       })
