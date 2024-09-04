@@ -1,9 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
 
-export default function Sort() {
-    const objects = ["популярности", "цене", "алфавиту"]
+export default function Sort({ activeSort, setActiveSort }) {
+    const objects = ["id", "price", "name"]
     const [transform, setTransform] = useState(0)
-    const [activeSort, setActiveSort] = useState('популярности')
     function handleClickTransform(value) {
         if (!value) {
             setTransform(1)
